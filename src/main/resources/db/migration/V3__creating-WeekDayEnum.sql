@@ -1,0 +1,1 @@
+CREATE TYPE week_day as ENUM ('segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo');
