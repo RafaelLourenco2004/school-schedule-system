@@ -1,8 +1,11 @@
 package com.example.demo.services.subject;
 
+import java.util.List;
+
 import com.example.demo.core.entitys.Subject;
 
 public interface SubjectService {
     
-    Subject createSubject(Subject subject);
+    Subject create(Subject subject);
+    List<Subject> getAll();
 }

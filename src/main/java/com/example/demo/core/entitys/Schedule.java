@@ -2,6 +2,7 @@ package com.example.demo.core.entitys;
 
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "schedule")
 public class Schedule {
     
+    
+    @Column(name = "schedule_id")
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     private UUID id;
