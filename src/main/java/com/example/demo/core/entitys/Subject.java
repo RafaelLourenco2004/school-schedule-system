@@ -3,10 +3,11 @@ package com.example.demo.core.entitys;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.demo.infra.converters.SemesterConverter;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,20 +24,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity()
-@Table(name = "suject")
+@Entity
+@Table(name = "subject")
 public class Subject {
 
-    @Column(name = "subject_id")
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "subject_id")
     private UUID id;
 
     private String name;
 
     private Integer credit;
 
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = SemesterConverter.class)
     private Semester semester;
 
     @ManyToMany
@@ -48,5 +49,9 @@ public class Subject {
     @JoinTable(joinColumns = @JoinColumn(name = "subject_id"),
     inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> graduatedStudents;
+
+    public void setId(UUID id){
+        this.id = id;
+    }
 
 }

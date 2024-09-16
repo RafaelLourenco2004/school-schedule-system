@@ -19,7 +19,9 @@ public class SubjectUseCase {
     public SubjectDto create(SubjectDto subjectDto) {
         if (subjectDto.isValid())
             throw new MissingFieldsException("All fields must be provided");
-        Subject subject = subjectDto.toSubject();
+        Subject s = new Subject();
+        System.out.println("ID "+s.getId().toString());
+        Subject subject = subjectService.create(subjectDto.toSubject());
         return new SubjectDto(subject);
     }
 
