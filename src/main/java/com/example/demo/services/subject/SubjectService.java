@@ -8,4 +8,6 @@ public interface SubjectService {
     
     Subject create(Subject subject);
     List<Subject> getAll();
+
+    boolean doesSubjectExist(String name);
 }

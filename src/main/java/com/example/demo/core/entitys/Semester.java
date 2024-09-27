@@ -11,14 +11,22 @@ public enum Semester {
     SEVENTH("7"),
     EIGHTH("8");
 
-    private final String SEMESTER;
+    private final String semester;
 
     private Semester(String semester) {
-        this.SEMESTER = semester;
+        this.semester = semester;
     }
 
-    public String getSEMESTER() {
-        return SEMESTER;
+    public static Semester toSemesterEnum(String semester){
+        for (Semester sem: Semester.values()){
+            if (sem.getSemester().equals(semester))
+                return sem;
+        }
+        return null;
+    }
+
+    public String getSemester() {
+        return semester;
     }
 
 }

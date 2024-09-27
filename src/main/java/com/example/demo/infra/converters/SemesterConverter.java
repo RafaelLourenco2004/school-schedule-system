@@ -9,23 +9,21 @@ import jakarta.persistence.Converter;
 
 @Component
 @Converter(autoApply = true)
-public class SemesterConverter implements AttributeConverter<Semester, String>{
+public class SemesterConverter implements AttributeConverter<Semester, String> {
 
-    private static final String key = "2"; 
-    
     @Override
     public String convertToDatabaseColumn(Semester semester) {
-        if (semester == null) return null;
-        System.out.println(semester.getSEMESTER()+"AQUIIIII");
-        // return semester.getSEMESTER().trim();
-        return key;
+        if (semester == null)
+            return null;
+        return semester.getSemester().trim();
     }
 
     @Override
-    public Semester convertToEntityAttribute(String dbData) {
-        if (dbData == null) return null;
-        return Semester.valueOf(dbData);
-    }
+    public Semester convertToEntityAttribute(String semester) {
+        if (semester == null)
+            return null;
 
-   
+        return Semester.toSemesterEnum(semester);
+
+    }
 }

@@ -23,7 +23,6 @@ public class SubjectServiceImpl implements SubjectService {
     @Override
     public Subject create(Subject subject) {
         String semester = semesterConverter.convertToDatabaseColumn(subject.getSemester());
-        System.out.println(subject.getId().toString().toUpperCase());
         return repository.create(
                 subject.getId(),
                 subject.getName(),
@@ -34,6 +33,11 @@ public class SubjectServiceImpl implements SubjectService {
     @Override
     public List<Subject> getAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public boolean doesSubjectExist(String name) {
+        return repository.existsByName(name);
     }
 
 }

@@ -18,11 +18,9 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @Entity
 @Table(name = "subject")
@@ -50,8 +48,25 @@ public class Subject {
     inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> graduatedStudents;
 
+    public Subject(){
+        id = UUID.randomUUID();
+    }
+
     public void setId(UUID id){
         this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCredit(Integer credit) {
+        if (credit <= 0 || credit > 5) return;
+        this.credit = credit;
+    }
+
+    public void setSemester(Semester semester) {
+        this.semester = semester;
     }
 
 }

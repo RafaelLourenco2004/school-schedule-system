@@ -1,4 +1,4 @@
-package com.example.demo.core.exceptions.missingfields;
+package com.example.demo.core.exceptions;
 
 public class MissingFieldsException extends RuntimeException {
 
@@ -6,6 +6,7 @@ public class MissingFieldsException extends RuntimeException {
 
     public MissingFieldsException(String message) {
         super(message);
+        this.message = message;
     }
 
     public String getMessage() {
